@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar style="--min-height: 100px">
-    <ion-title style="padding-bottom: 15px">1/3</ion-title>
+    <ion-title style="padding-bottom: 15px">3/3</ion-title>
     <ion-title>Post Job </ion-title>
 
     <ion-button slot="end" id="supporttitle" class="navbtna">
@@ -9,19 +9,21 @@
   </ion-toolbar>
   <ion-toolbar>
     <ion-segment value="job">
-      <ion-segment-button
-        value="job"
-        content-id=""
-        style="background-color: purple; color: white !important"
-      >
-        <ion-label class="ion-text-wrap">Job Details</ion-label>
+       <ion-segment-button value="basic" content-id="">
+        <ion-label class="ion-text-wrap">Basic Details</ion-label>
       </ion-segment-button>
       <ion-segment-button value="company" content-id="">
         <ion-label class="ion-text-wrap">Company Details</ion-label>
       </ion-segment-button>
-      <ion-segment-button value="basic" content-id="">
-        <ion-label class="ion-text-wrap">Basic Details</ion-label>
+      <ion-segment-button
+        value="job"
+        content-id="job"
+        style="background-color: purple; color: white !important"
+      >
+        <ion-label class="ion-text-wrap">Job Details</ion-label>
       </ion-segment-button>
+      
+     
     </ion-segment>
   </ion-toolbar>
 </ion-header>
@@ -345,21 +347,7 @@
           
           <p>Minimum Qualification <span style="color: red">*</span></p>
           <div class="qualification-buttons">
-            <!-- <ion-button
-              *ngFor="let level of qualification"
-              [fill]="selectedQualifications === level ? 'solid' : 'outline'"
-              [ngClass]="selectedQualifications === level ? 'purple-button' : 'medium'"
-              shape="round"
-              (click)="selectQualifications(level)"
-              type="button"
-            >
-              {{ level }}
-            </ion-button>
-            <ion-input
-              type="hidden"
-              formControlName="qualification"
-              [value]="selectedQualifications">
-            </ion-input> -->
+            
                <ng-select
             [items]="qualification"
             bindLabel="value"
@@ -488,13 +476,23 @@
             <option *ngFor="let option of languageOptions" [value]="option.id">
               {{option.value}}
             </option>
-            <option value="">Select option</option>
+          
           </ng-select>
-          <div class="rws">
-            <ion-checkbox>Read</ion-checkbox>
-            <ion-checkbox>Write</ion-checkbox>
-            <ion-checkbox>Speak</ion-checkbox>
-          </div>
+          <div class="rws" formGroupName="language1Skills">
+  <ion-item>
+    <ion-label>Read</ion-label>
+    <ion-checkbox formControlName="read"></ion-checkbox>
+  </ion-item>
+  <ion-item>
+    <ion-label>Write</ion-label>
+    <ion-checkbox formControlName="write"></ion-checkbox>
+  </ion-item>
+  <ion-item>
+    <ion-label>Speak</ion-label>
+    <ion-checkbox formControlName="speak"></ion-checkbox>
+  </ion-item>
+</div>
+          
           <ion-text
             color="danger"
             *ngIf="jobForm.get('language1')?.touched && jobForm.get('language1')?.invalid"
@@ -503,8 +501,10 @@
               >Select any one Language</small
             >
           </ion-text>
-          
-          <div><ion-label>Language 2</ion-label></div>
+          <div class="languageAddRem">
+          <ion-button (click)="addLanguage()" color="success">Add</ion-button>
+          <ion-button (click)="removeLanguage()" color="danger">Remove</ion-button></div>
+          <!-- <div><ion-label>Language 2</ion-label></div>
           <ng-select
             [items]="languageOptions2"
             bindLabel="value"
@@ -531,8 +531,11 @@
             <small *ngIf="jobForm.get('language2')?.errors?.['required']"
               >Select any one Language</small
             >
-          </ion-text>
-          
+          </ion-text> -->
+          <ion-item *ngIf="comp" >
+              <p >id</p>
+              <ion-input>{{comp}}</ion-input>
+           </ion-item>
           <p>Job Timing <span style="color: red">*</span></p>
           <ion-item>
             <ion-label position="stacked">Start Time</ion-label>

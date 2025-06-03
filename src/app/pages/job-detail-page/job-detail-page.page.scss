@@ -445,3 +445,11 @@ ion-textarea:focus-within {
   --border-color: #800080;
   --border-width: 2px;
 }
+.btn{
+  display: flex;
+  justify-content: space-between;
+}
+.languageAddRem{
+  display: flex;
+  justify-content: space-between;
+}

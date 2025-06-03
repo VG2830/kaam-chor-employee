@@ -19,32 +19,20 @@ export class JobDetailPage implements OnInit {
   @Input() formData: any;
   @Output() submit = new EventEmitter<void>();
 
-  segmentValue: string = 'step1';  // <-- Added this for ion-segment binding
-
+ 
   form = {
     description: ''
   };
 
   dropdownOptions: any[] = [];
- 
   languageOptions: any[] = [];
   selectedSkills: any[] = [];
-  languageOptions2: any[] = [];
+  // languageOptions2: any[] = [];
+  // languageOptions3:any[]=[];
+  // languageOptions4:any[]=[];
   qualification:any[]=[];
   jobForm: FormGroup;
-//   languageOptions = [];
 
-//  languageFilter = '';
-//   filteredLanguages = [];
-  // Qualification options
-  // qualification: string[] = [
-  //   '<10th pass',
-  //   '10th pass',
-  //   'Diploma',
-  //   '12th pass',
-  //   'Graduate',
-  //   'Post Graduate'
-  // ];
   
   selectedQualifications: string = '';
 
@@ -62,7 +50,7 @@ export class JobDetailPage implements OnInit {
     'Anywhere in India'
   ];
 
-
+  comp:any;
 
 
   constructor(
@@ -86,14 +74,22 @@ export class JobDetailPage implements OnInit {
       qualification: [[], Validators.required],
       salary: ['', Validators.required],
       skills: ['', Validators.required],
+      comp:[''],
       issecuritygiven: ['', Validators.required],
       language1: ['', Validators.required],
-      language2: ['', Validators.required],
+      language1Skills: this.fb.group({
+      read: [false],
+       write: [false],
+       speak: [false]
+      }),
+      // language2: [''],
+      // language3:[''],
+      // language4:[''],
       jobStartTime: ['', Validators.required],
       jobEndTime: ['', Validators.required],
       interviewTime: ['', Validators.required],
       interviewDay: ['', Validators.required],
-          acceptTerms: [false, Validators.requiredTrue],
+      acceptTerms: [false, Validators.requiredTrue],
 
     });
   }
@@ -104,34 +100,41 @@ export class JobDetailPage implements OnInit {
         this.dropdownOptions = res.data;
       }
     });
+    // this.apiService.get_user_compID().subscribe(
+    //   data => {
+    //     this.comp = data;
+    //     console.log('Company ID Data:', data);
+    //   },
+    //   error => {
+    //     console.error('Error fetching data:', error);
+    //   }
+    // );
     this.apiService.getLanguages().subscribe((res: any) => {
       if (res.status === 'success') {
         this.languageOptions = res.data;
       }
+       if (res) {
+      const skills = this.jobForm.get('language1Skills')?.value;
+     
+    }
     });
     this.apiService.getEduQual().subscribe((res: any) => {
       if (res.status === 'success') {
         this.qualification = res.data;
       }
     });
-     this.apiService.getLanguages().subscribe((res: any) => {
-      if (res.status === 'success') {
-        this.languageOptions2 = res.data;
-      }
-    });
+    //  this.apiService.getLanguages().subscribe((res: any) => {
+    //   if (res.status === 'success') {
+    //     this.languageOptions2 = res.data;
+    //   }
+    // });
     this.apiService.getSkills().subscribe((res: any) => {
       if (res.status === 'success') {
         this.selectedSkills = res.data;
       }
     });
-    //  this.filteredLanguages = this.languageOptions.slice();
   }
-// filterLanguages() {
-//     const search = this.languageFilter.toLowerCase();
-//     this.filteredLanguages = this.languageOptions.filter((lang:any) =>
-//       lang.value.toLowerCase().includes(search)
-//     );
-//   }
+
   markFormTouched(formGroup: FormGroup) {
     Object.values(formGroup.controls).forEach(control => {
       control.markAsTouched();
@@ -141,24 +144,28 @@ removeSkill(skill: any) {
   const currentSkills = this.jobForm.get('skills')?.value || [];
   this.jobForm.get('skills')?.setValue(currentSkills.filter((id: number) => id !== skill.id));
 }
+           addLanguage(){
 
+          }
+          removeLanguage(){
+
+
+}
   nextStep() {
     this.markFormTouched(this.jobForm);
     if (this.jobForm.valid) {
       console.log('Form data:', this.jobForm.value);
-      // Navigate to next step/page here, adjust route accordingly
       this.navCtrl.navigateForward('');
-      const accepted = this.jobForm.value.acceptTerms ? 1 : 0;
-    //   console.log('Accepted value:', accepted);
+      const accepted = this.jobForm.value.acceptTerms ? true : false;
+      console.log('Accepted value:', accepted);
     } else {
       console.log('Form is invalid');
     }
   }
 
   previousPage() {
-    // Logic to go to previous step/page
+   
     console.log('Previous step clicked');
-    // For example, you might navigate backward or update UI accordingly
     this.router.navigate(['/company-details-page']);
    
   }
@@ -172,7 +179,6 @@ removeSkill(skill: any) {
 //   
 const formData = {
   ...this.jobForm.value,
-  // step_one_data: 'step one',
   user_id: LocalStorageUtil.getItem('userId'),
 };
 
@@ -181,11 +187,11 @@ const formData = {
     this.apiService.submitJob(formData).subscribe(
       (response: any) => {
         console.log('Success:', response);
-        // Show success toast or redirect here
+        
       },
       (error: any) => {
         console.error('API Error:', error);
-        // Show error toast here
+        
       }
     );
   }

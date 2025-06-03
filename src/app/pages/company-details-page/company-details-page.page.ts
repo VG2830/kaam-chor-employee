@@ -35,6 +35,7 @@ export class CompanyDetailsPagePage implements OnInit {
         companyaddress: ['', Validators.required],
         companystate: ['', Validators.required],
         companycity: ['', Validators.required],
+        google_location:[''],
         companycountry: ['', Validators.required],
         companywebsite: ['', Validators.required],
         companydesc: ['', Validators.required],
@@ -58,6 +59,13 @@ export class CompanyDetailsPagePage implements OnInit {
   //     // if (res.status === 'success') {
   //     //   this.cityOptions = res.data;}
   //     // });
+  }
+  showTutorial = false;
+  openTutorial() {
+    this.showTutorial = true;
+  }
+  closeTutorial() {
+    this.showTutorial = false;
   }
 // Load cities when a state is selected
     onStateChange(stateId: number) {

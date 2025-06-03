@@ -3,14 +3,15 @@
     <ion-title style="padding-bottom: 15px">2/3</ion-title>
     <ion-title>Post Job</ion-title>
 
-    <ion-button slot="end" id="supporttitle">
+    <ion-button slot="end" id="supporttitle" style="background-color: purple; color: white !important">
       <ion-icon name="call-outline"></ion-icon>Call customer support
     </ion-button>
   </ion-toolbar>
   <ion-toolbar>
     <ion-segment value="company">
-      <ion-segment-button value="job" content-id="job">
-        <ion-label class="ion-text-wrap">Job Details</ion-label>
+     
+      <ion-segment-button value="basic" >
+        <ion-label class="ion-text-wrap">Basic Details</ion-label>
       </ion-segment-button>
       <ion-segment-button
         value="company"
@@ -19,8 +20,8 @@
       >
         <ion-label class="ion-text-wrap">Company Details</ion-label>
       </ion-segment-button>
-      <ion-segment-button value="basic" content-id="basic">
-        <ion-label class="ion-text-wrap">Basic Details</ion-label>
+       <ion-segment-button value="job" >
+        <ion-label class="ion-text-wrap">Job Details</ion-label>
       </ion-segment-button>
     </ion-segment>
   </ion-toolbar>
@@ -47,6 +48,8 @@
 
           <p>State<span style="color: red">*</span></p>
           <select formControlName="companystate" [(ngModel)]="selectedState" (ngModelChange)="onStateChange($event)">
+
+
             <option value="">Select one</option>
             <option *ngFor="let option of stateOptions" [value]="option.id">{{ option.name }}</option>
           </select>
@@ -69,8 +72,37 @@
             <small *ngIf="company.get('companycountry')?.errors?.['required']">Field is required</small>
           </ion-text>
 
-          <p>Google map Location</p>
-          <input type="text" />
+  <p > Google map Location
+    <a (click)="openTutorial()" style="cursor:pointer; color:blue;">link</a>
+  </p>
+  <ion-input type="text" formControlName="google_location" placeholder="Paste iframe code here" ></ion-input>
+<ion-modal [isOpen]="showTutorial" (didDismiss)="closeTutorial()">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Google Map Link Tutorial</ion-title>
+        <ion-buttons slot="end">
+          <ion-button (click)="closeTutorial()">
+            <ion-icon name="close"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content class="ion-padding">
+      <h2>Steps:</h2>
+      <ol>
+        <li>Open <a href="https://www.google.com/maps" target="_blank">Google Maps</a> and search for the desired location.</li>
+        <li>Click on the <b>Share</b> button.</li>
+        <li>Select the <b>Embed a map</b> tab.</li>
+        <li>Copy the provided HTML iframe code.</li>
+        <li>Paste the iframe code.</li>
+      </ol>
+       <img src="../../../assets/embed-map.jpg" alt="">
+
+    </ion-content>
+  </ng-template>
+</ion-modal>
 
           <p>Company Website</p>
           <input type="text" formControlName="companywebsite" />

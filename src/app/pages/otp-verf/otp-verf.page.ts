@@ -39,7 +39,7 @@ export class OtpVerfPage implements OnInit {
 
   submitOtp(){
     console.log('Attempting navigation to /tabs/home');
-  this.router.navigate(['/job-detail-page']).then(
+  this.router.navigate(['/basic-details-page']).then(
     () => console.log('Navigation successful'),
     (err) => console.error('Navigation failed', err)
   );

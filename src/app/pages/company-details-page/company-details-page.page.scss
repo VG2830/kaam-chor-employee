@@ -1,7 +1,9 @@
-// #supporttitle{
-//     font-size: 0.7rem;
-//      margin-right: 10px;
-// }
+#supporttitle{
+    font-size: 0.6rem;
+     margin-right: 8px;
+  //     --background: purple;
+  // color: white !important;
+}
 // :host {
 //   display: block;
 //   height: 100%;
@@ -36,25 +38,150 @@
 //     border-radius: 5px;
 //   }
 // }
-.btn{
+// .btn{
+//   display: flex;
+//   justify-content: space-between;
+//   margin-top: 10px;
+// }
+// // .heading{
+// //   color: purple;
+// // }
+// .scrollable-form {
+//   display: flex;
+//   flex-direction: column;
+//   height: 100%;
+//   overflow-y: auto;
+// }
+
+// .box {
+//   display: flex;
+//   flex-direction: column;
+//   flex-grow: 1;
+//    /* ensures spacing at the bottom for buttons */
+// }
+
+::ng-deep ion-modal.popup-modal {
+  --width: 90%;
+  --max-width: 400px;
+  --height: auto;
+  --border-radius: 12px;
+  --box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.2);
+  align-self: center;
+  justify-self: center;
+}
+/* General box styling */
+.box {
+  background-color: var(--ion-background-color, #1e1e1e);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.05);
+  color: var(--ion-text-color, #ffffff);
+}
+
+/* Headings */
+.heading {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--ion-text-color, #ffffff);
+  margin-bottom: 16px;
+}
+
+/* Input and Select fields */
+input[type='text'],
+input[type='number'],
+select,
+ion-input,
+ion-textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--ion-color-step-300, #444);
+  font-size: 1rem;
+  background-color: var(--ion-item-background, #2c2c2e);
+  color: var(--ion-text-color, #ffffff);
+  margin-top: 4px;
+}
+
+/* Textarea specific */
+ion-textarea {
+  min-height: 80px;
+}
+
+/* Error text */
+ion-text[color="danger"] small {
+  color: var(--ion-color-danger, #eb445a);
+  font-size: 0.85rem;
+}
+
+/* Buttons container */
+.btn {
   display: flex;
   justify-content: space-between;
-  margin-top: 10px;
-}
-// .heading{
-//   color: purple;
-// }
-.scrollable-form {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  overflow-y: auto;
+  margin-top: 24px;
 }
 
-.box {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-   /* ensures spacing at the bottom for buttons */
+/* Ion buttons */
+ion-button {
+  --border-radius: 8px;
+  --box-shadow: none;
+  --padding-start: 20px;
+  --padding-end: 20px;
+  font-weight: bold;
 }
 
+/* Modal tutorial */
+ion-modal {
+  --width: 90%;
+  --height: 80%;
+  background: var(--ion-background-color, #1e1e1e);
+}
+
+ion-modal ion-header {
+  border-bottom: 1px solid var(--ion-color-step-200, #333);
+}
+
+ion-modal ion-content {
+  background-color: var(--ion-background-color, #1e1e1e);
+  color: var(--ion-text-color, #ffffff);
+}
+
+ion-modal ol {
+  padding-left: 20px;
+}
+
+ion-modal img {
+  max-width: 100%;
+  margin-top: 12px;
+  border-radius: 8px;
+  border: 1px solid var(--ion-color-step-200, #333);
+}
+
+/* Segment button fallback */
+ion-segment-button {
+  --indicator-color: transparent;
+  --color-checked: #ffffff;
+  --background-checked: purple;
+}
+
+/* Titles */
+ion-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--ion-text-color, #ffffff);
+}
+
+/* Support button */
+#supporttitle {
+  --padding-start: 10px;
+  --padding-end: 10px;
+  --border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .btn {
+    flex-direction: column;
+    gap: 12px;
+  }
+}

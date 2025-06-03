@@ -16,18 +16,18 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class ApiService {
-  private baseUrl = 'https://ek-reps.com/kaam-chor/FormApi'; // Replace with your backend URL
+  private baseUrl = 'https://ek-reps.com/kaam-chor/Employer_Api'; // Replace with your backend URL
   private apiUrl = `${environment.baseUrl}`;
   constructor(private http: HttpClient) {}
 
   submitJob(data: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/step1`, data);
+    return this.http.post(`${this.baseUrl}/jobData`, data);
   }
   submitCompany(data: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/step2`, data);
+    return this.http.post(`${this.baseUrl}/compData`, data);
   }
   submitBasic(data: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/step3`, data);
+    return this.http.post(`${this.baseUrl}/regData`, data);
   }
    getJobCategory(): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/Api/get_jobcategory`);
@@ -53,5 +53,8 @@ export class ApiService {
   getSkills(): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/Api/get_skills`);
   }
-  
+  get_user_compID(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/Employer_Api/get_user_compID`);
+
+  }
 }
