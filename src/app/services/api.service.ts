@@ -53,8 +53,8 @@ export class ApiService {
   getSkills(): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/Api/get_skills`);
   }
-  get_user_compID(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/Employer_Api/get_user_compID`);
+  get_user_compID(data:any): Observable<any[]> {
+    return this.http.post<any[]>(`${this.apiUrl}/Employer_Api/get_user_compID`,data);
 
   }
 }
