@@ -202,6 +202,15 @@ if (this.languages.length > 1) {
     } 
     const formValue=this.jobForm.value;
      const transformedLanguages = this.transformLanguagesData(formValue.languages);
+     let minExp, maxExp;
+  if (formValue.candidatetype === 'fresher') {
+    minExp = 'Fresher';
+    maxExp = 'Fresher';
+  } else {
+    // For experienced candidates, ensure we have valid numbers
+    minExp = formValue.minexp?.toString() || '0';
+    maxExp = formValue.maxexp?.toString() || '0';
+  }
      const formData = {
   ...formValue,
   user_id: LocalStorageUtil.getItem('userId'),
@@ -212,7 +221,9 @@ if (this.languages.length > 1) {
        languages: transformedLanguages,
        skills: Array.isArray(formValue.skills) 
       ? formValue.skills.join(',') 
-      : formValue.skills
+      : formValue.skills,
+      min_exp:minExp,
+      max_exp:maxExp
         };
 
     console.log('Submitting form:', formData);
@@ -280,7 +291,7 @@ if (this.languages.length > 1) {
       this.jobForm.get('minexp')?.enable();
       this.jobForm.get('maxexp')?.enable();
     }
-    console.log("Candidate type:", cantype);
+    
   }
 
   handlerequirement(event: Event): void {

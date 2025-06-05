@@ -46,7 +46,8 @@ export class CompanyDetailsPagePage implements OnInit {
     }
   }
 
-  ngOnInit() {
+  ngOnInit()
+   {
      this.apiService.getIndustryType().subscribe((res: any) => {
       if (res.status === 'success') {
         this.industryTypeOptions = res.data;}

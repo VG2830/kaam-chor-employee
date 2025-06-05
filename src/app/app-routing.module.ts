@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'splash-screen',
+    redirectTo: 'employer-plan',
     pathMatch: 'full'
   },
   {
@@ -34,6 +34,11 @@ const routes: Routes = [
   {
     path: 'job-detail-page',
     loadChildren: () => import('./pages/job-detail-page/job-detail-page.module').then( m => m.JobDetailPagePageModule)
+  },
+ 
+  {
+    path: 'employer-plan',
+    loadChildren: () => import('./pages/employer-plan/employer-plan.module').then( m => m.EmployerPlanPageModule)
   },
   
 ];
