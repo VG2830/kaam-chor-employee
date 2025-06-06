@@ -16,11 +16,11 @@ export class AuthService {
   private apiUrl = `${environment.baseUrl}`;
 
   sendOtp(mobileNumber: string): Observable<any> {
-    return this.http.post(`${this.apiUrl}/api/send_otp`, { mobileNumber });
+    return this.http.post(`${this.apiUrl}/api/send_otp_e`, { mobileNumber });
   }
 
   verifyOtp(mobileNumber: string, otp: string): Observable<any> {
-    return this.http.post(`${this.apiUrl}/api/verify_otp`, { mobileNumber, otp });
+    return this.http.post(`${this.apiUrl}/api/verify_otp_e`, { mobileNumber, otp });
   }
 
   getmb_byuserid(userId: number): Observable<any>{

@@ -57,4 +57,8 @@ export class ApiService {
     return this.http.post<any[]>(`${this.apiUrl}/Employer_Api/get_user_compID`,data);
 
   }
+  getEmployerPlans(data:any): Observable<any[]> {
+    return this.http.post<any[]>(`${this.apiUrl}/Employer_Api/getEmployerPlans`,data);
+
+  }
 }

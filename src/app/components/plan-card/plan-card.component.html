@@ -1,4 +1,4 @@
-<ion-card class="plan-card">
+<!-- <ion-card class="plan-card">
   <ion-card-header class="btn">
     <ion-card-title class="plan-title">{{ title }}</ion-card-title>
   </ion-card-header>
@@ -11,6 +11,27 @@
     <p>{{ validity }}</p>
     <p>{{ boosts }}</p>
 
-    <ion-button expand="block" class="btn">Purchase Now</ion-button>
+        <ion-button expand="block" class="btn" (click)="openCheckoutModal()">Purchase Now</ion-button>
+    
+  </ion-card-content>
+</ion-card> -->
+<ion-card>
+  <ion-card-header>
+    <ion-button class="btn">{{ plan.title }}</ion-button>
+  </ion-card-header>
+
+  <ion-card-content >
+    <div style="text-align:center;">
+          <p>₹ {{ plan.price }}</p>
+          <p>{{plan.des}}</p>
+    <p>{{ plan.unlocks }} candidate unlocks</p>
+    <p>{{ plan.jobs }} job(s) live</p>
+    <p>Valid for {{ plan.duration }}</p>
+    <p>{{ plan.boosts }} job boosts</p>
+    </div>
+
+    <ion-button  class="btn" expand="block" color="primary" (click)="onPurchaseClick()">
+      PURCHASE NOW
+    </ion-button>
   </ion-card-content>
 </ion-card>

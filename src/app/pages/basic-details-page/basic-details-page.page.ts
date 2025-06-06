@@ -45,7 +45,7 @@ export class BasicDetailsPagePage  implements OnInit {
    {this.basiclast = this.fb.group({
 
   emplname: ['', Validators.required],
-  emplemail: ['', Validators.required],
+  emplemail: ['', Validators.required,Validators.email],
   contactperson: ['', Validators.required],
   emplnumber: ['', Validators.required],
     // acceptTerms: [false, Validators.requiredTrue],

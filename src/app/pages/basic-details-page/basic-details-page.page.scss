@@ -2,6 +2,10 @@
     font-size: 0.7rem;
      margin-right: 10px;
 }
+ion-button{
+  --background:#800080;
+  --color: white !important;
+}
 :host {
   display: block;
   height: 100%;

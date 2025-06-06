@@ -1,0 +1,78 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>Checkout Form</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <p><strong>Selected Plan:</strong></p>
+  <p class="text-purple">
+    ₹{{ plan.price }}.00 for {{ plan.duration }} days<br>
+    {{ plan.unlocks }} Unlocks, {{ plan.jobs }} Jobs, {{ plan.boosts }} Boosts
+  </p>
+
+  <ion-item>
+    <ion-icon slot="start" name="person-outline"></ion-icon>
+    <ion-input placeholder="Full Name"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-icon slot="start" name="mail-outline"></ion-icon>
+    <ion-input type="email" placeholder="Email"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-icon slot="start" name="call-outline"></ion-icon>
+    <ion-input type="tel" placeholder="Mobile Number"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-icon slot="start" name="location-outline"></ion-icon>
+    <ion-input placeholder="Address"></ion-input>
+  </ion-item>
+
+  <ion-button expand="block" color="secondary" class="ion-margin-top">
+    Pay Now
+  </ion-button>
+</ion-content> -->
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Checkout Form</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <p><strong>Selected Plan:</strong></p>
+  <p>
+    ₹{{ plan?.price }} for {{ plan?.duration }} days <br />
+    {{ plan?.unlocks }} Unlocks, {{ plan?.jobs }} Jobs, {{ plan?.boosts }} Boosts
+  </p>
+
+  <ion-item>
+    <ion-label position="stacked">Full Name</ion-label>
+    <ion-input placeholder="John M. Doe"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Email</ion-label>
+    <ion-input type="email" placeholder="john@example.com"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Mobile</ion-label>
+    <ion-input type="tel" placeholder="Mobile Number"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Address</ion-label>
+    <ion-input placeholder="542 W. 15th Street"></ion-input>
+  </ion-item>
+
+  <ion-button expand="block" color="secondary">Pay Now</ion-button>
+</ion-content>
