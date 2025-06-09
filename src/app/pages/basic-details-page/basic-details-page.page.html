@@ -54,7 +54,7 @@
             type="email"
             name=""
             id=""
-            value="john@gmail.com"
+            value=""
             formControlName="emplemail"
           />
           <small style="color: green"
@@ -83,11 +83,7 @@
           >
             <option value ="">Select one</option>
 <option *ngFor="let option of empProfileOptions" [value]="option.id">{{option.profile}}</option>
-            <!-- <option value="hdgnd">General Manager</option>
-            <option value=""></option>
-            <option value=""></option>
-            <option value=""></option>
-            <option value=""></option> -->
+           
           </select>
           <ion-text
             color="danger"
@@ -101,14 +97,10 @@
             >
           </ion-text>
           <p>Registered Mobile Number</p>
-          <!-- <span style="border: 2px solid white; height: 20px; width: 20px;">+91</span> -->
-          <input
-            type="number"
-            name=""
-            id=""
-            value=""
-            formControlName="emplnumber"
-          />
+        
+        <input class="mb_input"  type="tel"
+        formControlName="emplnumber" name="mobileNumber" required minlength="10" maxlength="10" pattern="^[0-9]{10}$"
+        (ionInput)="validatePhoneNumber($event)" >
           <small style="color: green"> --Candidates call in this number</small>
           <div>
             <ion-text
@@ -123,37 +115,9 @@
               >
             </ion-text>
           </div>
-          <!-- <p for="terms"> I Accept Terms and Conditions and Privacy Policy<span style="color: red;">*</span></p>
-      <input type="checkbox" name="terms" id="terms"  > -->
-          <br />
-          <!-- <ion-checkbox labelPlacement="end" style="margin-top: 10px"
-            >I Accept Terms and Conditions and <br />
-            Privacy Policy <span style="color: red;">*</span></ion-checkbox
-          > -->
-
-          <!-- new check -->
-           <!-- <ion-checkbox
-      formControlName="acceptTerms"
-      labelPlacement="end"
-      style="margin-top: 10px"
-    >
-      I Accept Terms and Conditions and <br />
-      Privacy Policy <span style="color: red;">*</span>
-    </ion-checkbox>
-  
-
-  <ion-text color="danger" *ngIf="basiclast.controls['acceptTerms'].touched && basiclast.controls['acceptTerms'].invalid">
-    <p>You must accept the terms and conditions</p>
-  </ion-text> -->
+       
+        
           <div class="btn">
-            <!-- <ion-button expand="block" (click)="prev.emit()">Back</ion-button> -->
-            <!-- <ion-button
-              expand="block"
-              class="submitbtn"
-              (click)="submit.emit()"
-              [disabled]="basiclast.invalid"
-              >Submit</ion-button
-            > -->
             <ion-button
               expand="full"
               class="submitbtn"

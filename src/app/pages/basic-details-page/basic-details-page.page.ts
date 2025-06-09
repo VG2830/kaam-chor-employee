@@ -39,7 +39,7 @@ export class BasicDetailsPagePage  implements OnInit {
    //get api
    empProfileOptions:any[]=[];
   //  selectedEmplProfile:string="";
-
+ emplnumber: string = '';
    //end 
   constructor( private fb: FormBuilder,  private navCtrl: NavController,private apiService: ApiService,private router: Router) {
    {this.basiclast = this.fb.group({
@@ -48,32 +48,45 @@ export class BasicDetailsPagePage  implements OnInit {
   emplemail: ['', Validators.required,Validators.email],
   contactperson: ['', Validators.required],
   emplnumber: ['', Validators.required],
+ 
     // acceptTerms: [false, Validators.requiredTrue],
-        });}}
+        });}
+      
+      
+      const nav = this.router.getCurrentNavigation();
+    if (nav?.extras?.state?.['mobileNumber']) {
+      const mobile = nav.extras.state['mobileNumber'];
+      this.basiclast.patchValue({ emplnumber: mobile }); // Prefill field
+    }
+      
+      }
   ngOnInit() {
      this.apiService.getEmpProfile().subscribe((res: any) => {
       if (res.status === 'success') {
         this.empProfileOptions = res.data;}
       });
   }
-  subbmit() {
-  if (this.basiclast.valid) {
-    //  const accepted = this.basiclast.value.acceptTerms ? 1 : 0;
-    //   console.log('Accepted value:', accepted);
-    console.log('Form data:', this.basiclast.value);
-    // this.navCtrl.navigateForward('next-page'); // Replace with actual route
-  } else {
-    this.basiclast.markAllAsTouched();
-    console.log('Form is invalid');
+  validatePhoneNumber(event: any) {
+    const input = event.target as HTMLIonInputElement;
+    const value = input.value as string;
+
+    // Remove any non-digit characters
+    const numericValue = value.replace(/\D/g, '');
+
+    // Limit to 10 digits
+    this.emplnumber = numericValue.slice(0, 10);
+
+    // Update the input value
+    input.value = this.emplnumber;
   }
-}
+
 
 submitForm() {
-  if (this.basiclast.invalid) {
+  if (this.basiclast.invalid ) {
     this.basiclast.markAllAsTouched(); // Show validation errors
     return;
   }
-   if(this.basiclast.valid){
+   if(this.basiclast.valid ){
             this.router.navigate(['/company-details-page']);
           }
 

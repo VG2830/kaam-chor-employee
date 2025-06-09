@@ -12,7 +12,7 @@ import { AuthService } from 'src/app/services/auth.service';
   standalone:false,
   templateUrl: './otp-verf.page.html',
   styleUrls: ['./otp-verf.page.scss'],
-  //  imports: [CommonModule, IonicModule,ReactiveFormsModule,FormsModule] ,
+  
 })
 export class OtpVerfPage implements OnInit {
   mobileNumber: string = '';
@@ -20,15 +20,13 @@ export class OtpVerfPage implements OnInit {
   username: string = '';
   isLoading: boolean = false;
   isNewUser: boolean = false;
-  // isNewUser: boolean | undefined;
-
+ 
   constructor(private navCtrl: NavController, private platform: Platform,private router: Router,private route: ActivatedRoute,private authService: AuthService) { }
 
   ngOnInit() {
-    StatusBar.setBackgroundColor({ color: '#ffffff' }); // white
-      // Set the status bar style to dark (black text/icons)
+    StatusBar.setBackgroundColor({ color: '#ffffff' }); 
       StatusBar.setStyle({ style: StatusBarStyle.Dark });
-    // console.log(this.isNewUser);
+    
     const navigation = this.router.getCurrentNavigation();
     if (navigation?.extras.state) {
       this.mobileNumber = navigation.extras.state['mobileNumber'];
@@ -55,26 +53,24 @@ export class OtpVerfPage implements OnInit {
           console.log('OTP verified successfully', response);
           this.isLoading = false;
 
-          //set localstorage is loggedin 
-          // Set localStorage indicator for login
+          
           console.log('userid',response.data.user_id);
+          // console.log(this.mobileNumber);
           localStorage.setItem('isLoggedIn', 'true');
           localStorage.setItem('userId', response.data.user_id.toString());
 
-        //   this.formDataService.getFormData(this.userId).subscribe(data => {
-        //     this.formDataService.setFormData(data); // Prefill the form data
-        //     this.router.navigate(['/step-one']); // Navigate to the first step
-        // });
+       
 
           const navigationExtras: NavigationExtras = {
             state: {
-              verified: true
+              verified: true,
+              mobileNumber: this.mobileNumber
             }
           };
 
           // this.router.navigate(['/home'], navigationExtras); // Adjust the route as needed
           if(this.isNewUser){
-            this.router.navigate(['/basic-details-page'], navigationExtras);
+            this.router.navigate(['/basic-details-page'], navigationExtras,);
           }else{
             this.router.navigate(['/login'], navigationExtras);
           }

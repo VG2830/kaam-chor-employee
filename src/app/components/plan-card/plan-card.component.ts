@@ -50,6 +50,7 @@
 // }
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
+
 @Component({
   selector: 'app-plan-card',
   
@@ -57,11 +58,18 @@ import { IonicModule } from '@ionic/angular';
   styleUrls: ['./plan-card.component.scss'],
   imports:[IonicModule],
 })
+
 export class PlanCardComponent {
   @Input() plan: any;
   @Output() purchase = new EventEmitter<any>();
 
   onPurchaseClick() {
     this.purchase.emit(this.plan);
+  }
+
+  
+
+  ngOnInit(){
+    
   }
 }

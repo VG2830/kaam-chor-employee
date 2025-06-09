@@ -31,7 +31,7 @@ export class JobDetailPage implements OnInit {
   qualification:any[]=[];
   jobForm: FormGroup;
 
-  
+  years: number[] = [];
   selectedQualifications: string = '';
 
   // Radio/select controls holders
@@ -57,6 +57,7 @@ export class JobDetailPage implements OnInit {
     private navCtrl: NavController,
     private router: Router
   ) {
+     this.years = Array.from({ length: 30 }, (_, i) => i + 1);
     this.jobForm = this.fb.group({
       jobTitle: ['', [Validators.required, Validators.minLength(3)]],
       jobCategory: ['', Validators.required],
@@ -113,6 +114,7 @@ export class JobDetailPage implements OnInit {
   });
 }
   ngOnInit() {
+   
     this.apiService.getJobCategory().subscribe((res: any) => {
       if (res.status === 'success') {
         this.dropdownOptions = res.data;

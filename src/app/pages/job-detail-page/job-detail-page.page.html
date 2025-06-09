@@ -229,6 +229,14 @@
 
             <div *ngIf="candidatetype === 'experienced'">
               <ion-item>
+              <ion-label position="stacked">Min Experience</ion-label>
+  <ion-select formControlName="minexp" placeholder="Select minimum years">
+    <ion-select-option *ngFor="let year of years" [value]="year">
+      {{ year }} year{{ year > 1 ? 's' : '' }}
+    </ion-select-option>
+  </ion-select>
+</ion-item>
+              <!-- <ion-item>
                 <ion-label position="stacked">Min Experience</ion-label>
                 <ion-input
                   type="number"
@@ -236,11 +244,19 @@
                   placeholder="Enter minimum experience in years"
                 >
                 </ion-input>
-              </ion-item>
+              </ion-item> -->
             </div>
 
             <div *ngIf="candidatetype === 'experienced'">
               <ion-item>
+  <ion-label position="stacked">Max Experience</ion-label>
+  <ion-select formControlName="maxexp" placeholder="Select maximum years">
+    <ion-select-option *ngFor="let year of years" [value]="year">
+      {{ year }} year{{ year > 1 ? 's' : '' }}
+    </ion-select-option>
+  </ion-select>
+</ion-item>
+              <!-- <ion-item>
                 
                 <ion-label position="stacked">Max Experience</ion-label>
                 <ion-input
@@ -249,8 +265,8 @@
                   placeholder="Enter maximum experience in years"
                 >
                 </ion-input>
-                <ion-select></ion-select>
-              </ion-item>
+                
+              </ion-item> -->
             </div>
           </div>
 

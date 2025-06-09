@@ -19,7 +19,7 @@ import { PlanCardComponent } from 'src/app/components/plan-card/plan-card.compon
   ],
 })
 export class EmployerPlanPage implements OnInit {
-  // plann:any[]:[];
+ 
 plans = [
     {
       title: '1 month PLAN',
@@ -87,7 +87,8 @@ plans = [
       jobs: 600,
       boosts: 90,
     }
-  ];
+   ];
+        //  plans:any[]=[];
 
   constructor(private modalCtrl: ModalController,private apiService: ApiService) { }
 
@@ -100,10 +101,10 @@ plans = [
   }
 
   ngOnInit() {
-    // this.apiService.getEmployerPlans().subscribe((res: any) => {
-    //   if (res.status === 'success') {
-    //     this.plans = res.data;}
-    //   });
+    this.apiService.getEmployerPlans().subscribe((res: any) => {
+      if (res.status === 'success') {
+        this.plans = res.data;}
+      });
   }
 
 
