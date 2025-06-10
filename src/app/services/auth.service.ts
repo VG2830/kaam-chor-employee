@@ -26,5 +26,6 @@ export class AuthService {
   getmb_byuserid(userId: number): Observable<any>{
     return this.http.post(`${this.apiUrl}/api/get_usermb`, { userId });
   }
+   
 }
     

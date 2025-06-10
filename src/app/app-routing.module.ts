@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'employer-plan',
+    redirectTo: 'splash-screen',
     pathMatch: 'full'
   },
   {

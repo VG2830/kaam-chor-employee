@@ -228,143 +228,77 @@ ion-textarea {
   flex-direction: column;
 }
 
-// ng-select styling (enhanced for better integration)
+/* Base styling for ng-select */
 ng-select {
   width: 100%;
-  min-height: 48px;
-  border-radius: 8px;
+  height: 40px;
+  border-radius: 5px;
   display: block;
-  margin-bottom: 16px;
-  
-  &.custom-ng-select {
-    font-size: 16px;
-  }
 }
 
-// Enhanced ng-select theming
-::ng-deep {
-  ng-select {
-    font-size: 16px;
-    width: 100%;
-    
-    .ng-select-container {
-      min-height: 48px;
-      border-radius: 8px;
-      padding: 12px 16px;
-      border: 1px solid var(--ion-border-color, #ccc);
-      background-color: var(--ion-background-color, white);
-      color: var(--ion-text-color);
-      transition: border-color 0.2s ease;
-      
-      &:hover {
-        border-color: #800080;
-      }
-      
-      &.ng-select-focused {
-        border-color: #800080;
-        box-shadow: 0 0 0 2px rgba(128, 0, 128, 0.2);
-      }
-      
-      .ng-value-container {
-        padding: 0;
-        
-        .ng-placeholder {
-          color: var(--ion-placeholder-color, rgba(0, 0, 0, 0.5));
-        }
-        
-        .ng-value {
-          color: var(--ion-text-color);
-        }
-      }
-      
-      .ng-arrow-wrapper {
-        .ng-arrow {
-          border-color: #800080 transparent transparent;
-        }
-      }
-    }
-  }
-  
-  // Dropdown panel styling
-  .ng-dropdown-panel {
-    position: absolute !important;
-    z-index: 1050 !important;
-    background-color: var(--ion-background-color, white);
-    color: var(--ion-text-color);
-    border: 1px solid var(--ion-border-color, #ccc);
-    border-radius: 8px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-    
-    .ng-option {
-      padding: 12px 16px;
-      color: var(--ion-text-color);
-      transition: background-color 0.2s ease;
-      
-      &.ng-option-selected {
-        background-color: #800080 !important;
-        color: #fff;
-      }
-      
-      &:hover {
-        background-color: var(--ion-color-light, #f5f5f5);
-      }
-      
-      &.ng-option-highlighted {
-        background-color: rgba(128, 0, 128, 0.1);
-      }
-    }
-  }
-  
-  // Dark mode ng-select
-  @media (prefers-color-scheme: dark) {
-    ng-select .ng-select-container {
-      background-color: var(--ion-item-background, #1e1e1e);
-      border-color: var(--ion-border-color, #444);
-      color: white;
-      
-      .ng-value-container .ng-placeholder {
-        color: rgba(255, 255, 255, 0.6);
-      }
-    }
-    
-    .ng-dropdown-panel {
-      background-color: var(--ion-item-background, #2c2c2c);
-      border-color: var(--ion-border-color, #444);
-      
-      .ng-option {
-        color: white;
-        
-        &:hover {
-          background-color: #444;
-        }
-      }
-    }
-  }
+/* Style inside component using ::ng-deep */
+::ng-deep ng-select {
+  font-size: 14px;
+  width: 100%;
 }
 
-// Selected skill chips
+/* Container styling */
+::ng-deep ng-select .ng-select-container {
+  min-height: 40px;
+  border-radius: 6px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  background-color: #1e1e1e; /* Dark background for dark mode */
+  color: #fff;
+}
+
+/* Hover state */
+::ng-deep ng-select .ng-select-container:hover {
+  border-color: #3f51b5;
+}
+
+/* Dropdown panel (fix overlapping issue) */
+::ng-deep .ng-dropdown-panel {
+  position: absolute !important;
+  z-index: 1050 !important;
+  background-color: #2c2c2c; /* Optional: dark background */
+  color: white;
+  border: 1px solid #3f3f3f;
+}
+
+/* Option style */
+::ng-deep .ng-dropdown-panel .ng-option {
+  padding: 8px 12px;
+  color: white;
+}
+
+/* Selected option */
+::ng-deep .ng-dropdown-panel .ng-option-selected {
+  background-color: #800080 !important;
+  color: #fff;
+}
+
+/* Option hover */
+::ng-deep .ng-dropdown-panel .ng-option:hover {
+  background-color: #444;
+}
 .selected-skill-chip {
   display: inline-flex;
   align-items: center;
   background-color: #800080;
   color: white;
   border-radius: 16px;
-  padding: 4px 12px;
+  padding: 2px 10px;
   margin: 2px;
   font-size: 13px;
-  
-  .remove-chip {
-    margin-left: 8px;
-    cursor: pointer;
-    font-weight: bold;
-    opacity: 0.8;
-    transition: opacity 0.2s ease;
-    
-    &:hover {
-      opacity: 1;
-    }
-  }
 }
+
+.selected-skill-chip .remove-chip {
+  margin-left: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
 
 // Form section labels
 p {

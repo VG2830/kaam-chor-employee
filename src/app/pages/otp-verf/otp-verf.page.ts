@@ -4,6 +4,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { StatusBar,Style as StatusBarStyle } from '@capacitor/status-bar';
 import { IonicModule, NavController, Platform } from '@ionic/angular';
+import { ApiService } from 'src/app/services/api.service';
 import { AuthService } from 'src/app/services/auth.service';
 
 
@@ -21,7 +22,7 @@ export class OtpVerfPage implements OnInit {
   isLoading: boolean = false;
   isNewUser: boolean = false;
  
-  constructor(private navCtrl: NavController, private platform: Platform,private router: Router,private route: ActivatedRoute,private authService: AuthService) { }
+  constructor(private navCtrl: NavController, private platform: Platform,private router: Router,private route: ActivatedRoute,private authService: AuthService,private apiService:ApiService) { }
 
   ngOnInit() {
     StatusBar.setBackgroundColor({ color: '#ffffff' }); 
@@ -33,8 +34,14 @@ export class OtpVerfPage implements OnInit {
       this.isNewUser = navigation.extras.state['isNewUser'];
       this.username = navigation.extras.state['username'];
     }
+  //   const userId=500;
+  //    this.apiService.Getmbbyuserid(userId).subscribe({
+  //          next: (res) => {
+  //            if (res.status === 'success') {
+  //              const mobile = res.mobile_number;
+  //            console.log(mobile);
+  // }}});
   }
-
   submitOtp(){
     console.log('Attempting navigation to /tabs/home');
   this.router.navigate(['/basic-details-page']).then(
@@ -44,51 +51,55 @@ export class OtpVerfPage implements OnInit {
   }
 
   verifyOtp() {
-    if (this.otp.length === 4 && !this.isLoading) {
-      this.isLoading = true;
-      console.log('Verifying OTP:', this.otp);
+  if (this.otp.length === 4 && !this.isLoading) {
+    this.isLoading = true;
+    console.log('Verifying OTP:', this.otp);
 
-      this.authService.verifyOtp(this.mobileNumber, this.otp).subscribe({
-        next: (response) => {
-          console.log('OTP verified successfully', response);
-          this.isLoading = false;
+    this.authService.verifyOtp(this.mobileNumber, this.otp).subscribe({
+      next: (response) => {
+        console.log('OTP verified successfully', response);
+        this.isLoading = false;
 
-          
-          console.log('userid',response.data.user_id);
-          // console.log(this.mobileNumber);
-          localStorage.setItem('isLoggedIn', 'true');
-          localStorage.setItem('userId', response.data.user_id.toString());
-
-       
-
-          const navigationExtras: NavigationExtras = {
-            state: {
-              verified: true,
-              mobileNumber: this.mobileNumber
+        const userId = response.data.user_id;
+        localStorage.setItem('isLoggedIn', 'true');
+        localStorage.setItem('userId', userId.toString());
+//get mb 
+        this.apiService.Getmbbyuserid(userId).subscribe({
+          next: (res) => {
+            if (res.status === 'success') {
+              const mobile = res.mobile_number;
+              console.log(mobile);
+              const navigationExtras: NavigationExtras = {
+                state: {
+                  verified: true,
+                  mobile_number: mobile
+                }
+              };
+      
+              if (this.isNewUser) {
+                this.router.navigate(['/basic-details-page'], navigationExtras);
+              } else {
+                this.router.navigate(['/login'], navigationExtras);
+              }
+            } else {
+              console.error('Failed to get mobile number:', res.message);
             }
-          };
-
-          // this.router.navigate(['/home'], navigationExtras); // Adjust the route as needed
-          if(this.isNewUser){
-            this.router.navigate(['/basic-details-page'], navigationExtras,);
-          }else{
-            this.router.navigate(['/login'], navigationExtras);
+          },
+          error: (err) => {
+            console.error('Error fetching mobile number:', err);
           }
-         
-        },
-        error: (error) => {
-          console.error('Error verifying OTP', error);
-          this.isLoading = false;
-          console.log(error.error.data.message);
-          // Handle error (e.g., show error message to user)
-          // You might want to use a toast or alert to inform the user
-        }
-      });
-    } else {
-      console.error('Invalid OTP or already processing');
-      // Optionally, inform the user about the invalid submission
-    }
+        });
+      },
+      error: (error) => {
+        console.error('Error verifying OTP', error);
+        this.isLoading = false;
+      }
+    });
+  } else {
+    console.error('Invalid OTP or already processing');
   }
+}
+
 
   goBack(){
     this.navCtrl.back();

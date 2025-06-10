@@ -1,17 +1,17 @@
 
 <ion-card>
   <ion-card-header>
-    <ion-button class="btn">{{ plan.title }}</ion-button>
+    <ion-button class="btn">{{ plan.duration + " " +"plan" }}</ion-button>
   </ion-card-header>
 
   <ion-card-content >
     <div style="text-align:center;">
           <p>₹ {{ plan.price }}</p>
-          <p>{{plan.des}}</p>
-    <p>{{ plan.unlocks }} candidate unlocks</p>
-    <p>{{ plan.jobs }} job(s) live</p>
+        <p>  Unlimited Candidate Responses</p>
+    <p>{{ plan.candidate_unlock }} candidate unlocks</p>
+    <p>{{ plan.jobs_live }} job(s) live</p>
     <p>Valid for {{ plan.duration }}</p>
-    <p>{{ plan.boosts }} job boosts</p>
+    <p>{{ plan.jobs_boost }} job boosts</p>
    
    
     </div>

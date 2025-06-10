@@ -16,6 +16,7 @@
 //   }
 
 // }
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit ,Input ,Output,EventEmitter} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavController } from '@ionic/angular';
@@ -40,8 +41,9 @@ export class BasicDetailsPagePage  implements OnInit {
    empProfileOptions:any[]=[];
   //  selectedEmplProfile:string="";
  emplnumber: string = '';
+ 
    //end 
-  constructor( private fb: FormBuilder,  private navCtrl: NavController,private apiService: ApiService,private router: Router) {
+  constructor( private fb: FormBuilder,  private navCtrl: NavController,private apiService: ApiService,private router: Router,private route: ActivatedRoute,) {
    {this.basiclast = this.fb.group({
 
   emplname: ['', Validators.required],
@@ -49,15 +51,11 @@ export class BasicDetailsPagePage  implements OnInit {
   contactperson: ['', Validators.required],
   emplnumber: ['', Validators.required],
  
-    // acceptTerms: [false, Validators.requiredTrue],
+    
         });}
       
       
-      const nav = this.router.getCurrentNavigation();
-    if (nav?.extras?.state?.['mobileNumber']) {
-      const mobile = nav.extras.state['mobileNumber'];
-      this.basiclast.patchValue({ emplnumber: mobile }); // Prefill field
-    }
+      
       
       }
   ngOnInit() {
@@ -65,6 +63,12 @@ export class BasicDetailsPagePage  implements OnInit {
       if (res.status === 'success') {
         this.empProfileOptions = res.data;}
       });
+ 
+  const navigation = this.router.getCurrentNavigation();
+if (navigation?.extras.state?.['mobile_number']) {
+  this.emplnumber = navigation.extras.state['mobile_number'];
+}
+
   }
   validatePhoneNumber(event: any) {
     const input = event.target as HTMLIonInputElement;
