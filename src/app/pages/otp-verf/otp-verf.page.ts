@@ -79,7 +79,7 @@ export class OtpVerfPage implements OnInit {
 
             this.router.navigate(['/basic-details-page'], navigationExtras);
           }else{
-            this.router.navigate(['/login'], navigationExtras);
+            this.router.navigate(['/employer-plan'], navigationExtras);
           }
          
         },

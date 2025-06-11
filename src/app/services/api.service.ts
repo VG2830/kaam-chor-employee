@@ -63,5 +63,8 @@ export class ApiService {
  Getmbbyuserid(userId: number): Observable<any> {
   return this.http.get<any>(`${this.apiUrl}/Employer_Api/Getmbbyuserid/${userId}`);
 }
+  getEmployerData(userId: number): Observable<any> {
+  return this.http.get<any>(`${this.apiUrl}/Employer_Api/getEmployerData/${userId}`);
+}
 
 }

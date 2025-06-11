@@ -100,7 +100,7 @@
         
         <input class="mb_input"  type="tel"
         formControlName="emplnumber" name="mobileNumber" required minlength="10" maxlength="10" pattern="^[0-9]{10}$"
-        (ionInput)="validatePhoneNumber($event)" >
+        (ionInput)="validatePhoneNumber($event)"  >
           <small style="color: green"> --Candidates call in this number</small>
           <div>
             <ion-text
@@ -123,8 +123,11 @@
               class="submitbtn"
               (click)="submitForm()"
               [disabled]="basiclast.invalid"
-              >Submit</ion-button
+              >Save & Continue</ion-button
             >
+            <!-- <ion-button (click)="onlyNavigation" [disabled]="">
+              Next
+            </ion-button> -->
           </div>
         </div>
       </form>
