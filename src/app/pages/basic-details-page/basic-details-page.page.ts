@@ -36,7 +36,8 @@ export class BasicDetailsPagePage  implements OnInit {
   @Output() submit = new EventEmitter<void>();
 
    basiclast:FormGroup;
-
+ user_id!: number;
+   mobileNumber: string='';
    //get api
    empProfileOptions:any[]=[];
   //  selectedEmplProfile:string="";
@@ -64,10 +65,16 @@ export class BasicDetailsPagePage  implements OnInit {
         this.empProfileOptions = res.data;}
       });
  
-  const navigation = this.router.getCurrentNavigation();
-if (navigation?.extras.state?.['mobile_number']) {
-  this.emplnumber = navigation.extras.state['mobile_number'];
-}
+  const storedUserId = localStorage.getItem('userId');
+      if (storedUserId) {
+        this.user_id = parseInt(storedUserId, 10);
+    this.apiService.Getmbbyuserid(this.user_id).subscribe(res => {
+      if (res.status && res.data?.mobile_number) {
+        this.mobileNumber = res.data.mobile_number;
+        this.basiclast.patchValue({ emplnumber: this.mobileNumber }); // Prefill mobile field
+      }
+    });
+  }
 
   }
   validatePhoneNumber(event: any) {
