@@ -387,3 +387,9 @@ ion-textarea:focus-within {
   display: flex;
   justify-content: space-between;
 }
+.submitbtn{
+
+  --background: purple;
+  color: white !important;
+   border-radius: 5px;
+}

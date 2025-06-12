@@ -28,11 +28,11 @@ export class SplashScreenPage implements OnInit {
      setTimeout(() => {
       const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
       if (isLoggedIn) {
-        this.router.navigate(['/job-detail-page']);  //change krna h login its for trail 
+        this.router.navigate(['/basic-details-page']);  //change krna h login its for trail 
        
       } else {
         this.router.navigate(['/login']);
-        // this.router.navigate(['/reg-aboutme']);  
+        
       }
     }, 3000);
     
@@ -44,7 +44,7 @@ export class SplashScreenPage implements OnInit {
   navigateToAppropriateRoute() {
     const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
     if (isLoggedIn) {
-      this.router.navigate(['/tabs/home']);  
+      this.router.navigate(['/basic-details-page']);  
       
     } else {
       this.router.navigate(['/login']);

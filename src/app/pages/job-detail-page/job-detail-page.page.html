@@ -645,12 +645,14 @@
           </ion-text>
 
           <div class="btn">
-            <ion-button expand="block" (click)="previousPage()"
-              >Back</ion-button
-            >
+            <ion-button 
+              expand="block"
+             (click)="previousPage()"
+               class="submitbtn">Back</ion-button >
 
             <ion-button
               expand="block"
+              class="submitbtn"
               (click)="submitForm()"
               type="submit"
               [disabled]="jobForm.invalid"

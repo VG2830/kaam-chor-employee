@@ -1,12 +1,12 @@
 
 <ion-card>
-  <ion-card-header>
-    <ion-button class="btn">{{ plan.duration + " " +"plan" }}</ion-button>
+  <ion-card-header class="btn" style="font-size: 1.5rem ; text-align: center;">
+   {{ plan.duration + " " +"plan" }}
   </ion-card-header>
 
   <ion-card-content >
     <div style="text-align:center;">
-          <p>₹ {{ plan.price }}</p>
+          <p style="font-size: 1.3rem;margin-top: 15px;">₹ {{ plan.price }}</p>
         <p>  Unlimited Candidate Responses</p>
     <p>{{ plan.candidate_unlock }} candidate unlocks</p>
     <p>{{ plan.jobs_live }} job(s) live</p>
@@ -16,8 +16,8 @@
    
     </div>
 
-    <ion-button  class="btn" expand="block" color="primary" (click)="onPurchaseClick()">
+   <div style="text-align: center;"> <ion-button  class="btn"  (click)="onPurchaseClick()" >
       PURCHASE NOW
-    </ion-button>
+    </ion-button></div>
   </ion-card-content>
 </ion-card>

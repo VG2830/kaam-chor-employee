@@ -1,0 +1,36 @@
+/* Style input and textarea fields inside ion-item */
+ion-item {
+  --background: #fff;
+  --border-radius: 8px;
+  --padding-start: 10px;
+  --inner-padding-end: 10px;
+  --highlight-color-focused: #800080; // purple focus
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+}
+
+/* Style for ion-label when floating */
+ion-label {
+  font-size: 14px;
+  color: #333;
+}
+
+/* Style input text */
+ion-input,
+ion-textarea {
+  --padding-start: 10px;
+  --padding-end: 10px;
+  font-size: 15px;
+  color: #000;
+}
+
+/* Optional: Card spacing */
+ion-card {
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+ion-card-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #800080; // Purple
+}

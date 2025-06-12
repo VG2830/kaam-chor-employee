@@ -1,13 +1,104 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>my_profile</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="ion-padding">
+  <!-- Personal Details -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title style="color: purple">Personal Details</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">Name</ion-label>
+        <ion-input formControlName="name"></ion-input>
+      </ion-item>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">my_profile</ion-title>
-    </ion-toolbar>
-  </ion-header>
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input type="email" formControlName="email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Mobile Number</ion-label>
+        <ion-input type="tel" formControlName="mobile"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Profile</ion-label>
+        <ion-input formControlName="profile"></ion-input>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Company Details -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title style="color: purple">Company Details</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">Company Name</ion-label>
+        <ion-input formControlName="company_name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Industry Type</ion-label>
+        <ion-input formControlName="industry_type"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Year of Establishment</ion-label>
+        <ion-input type="number" formControlName="year"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Company Size</ion-label>
+        <ion-input formControlName="company_size"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Company Website</ion-label>
+        <ion-input formControlName="company_website"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">About Company</ion-label>
+        <ion-textarea formControlName="about_company"></ion-textarea>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Address & Location -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title style="color: purple">Address & Location</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">Company Full Address</ion-label>
+        <ion-input formControlName="company_address"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Country</ion-label>
+        <ion-input formControlName="country"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">State</ion-label>
+        <ion-input formControlName="state"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">City</ion-label>
+        <ion-input formControlName="city"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Map Location</ion-label>
+        <ion-input
+          formControlName="map_location"
+         
+          value="No location provided"
+        ></ion-input>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

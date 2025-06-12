@@ -77,7 +77,12 @@
   box-shadow: 0 2px 8px rgba(255, 255, 255, 0.05);
   color: var(--ion-text-color, #ffffff);
 }
+.submitbtn{
 
+  --background: purple;
+  color: white !important;
+   border-radius: 5px;
+}
 /* Headings */
 .heading {
   font-size: 1.5rem;
@@ -114,9 +119,9 @@ ion-text[color="danger"] small {
 }
 
 /* Buttons container */
-.btn {
+.btn{
   display: flex;
-  justify-content: space-between;
+   justify-content: space-between;
   margin-top: 24px;
 }
 
@@ -127,6 +132,8 @@ ion-button {
   --padding-start: 20px;
   --padding-end: 20px;
   font-weight: bold;
+  --background:#800080;
+  --color: white !important;
 }
 
 /* Modal tutorial */
@@ -166,7 +173,7 @@ ion-segment-button {
 /* Titles */
 ion-title {
   font-size: 1.3rem;
-  font-weight: 600;
+  
   color: var(--ion-text-color, #ffffff);
 }
 
@@ -179,9 +186,9 @@ ion-title {
 }
 
 /* Responsive adjustments */
-@media (max-width: 600px) {
-  .btn {
-    flex-direction: column;
-    gap: 12px;
-  }
-}
+// @media (max-width: 600px) {
+//   .btn {
+//     flex-direction: column;
+//     gap: 12px;
+//   }
+// }

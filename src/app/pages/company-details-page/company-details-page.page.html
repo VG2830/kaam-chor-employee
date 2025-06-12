@@ -3,7 +3,7 @@
     <ion-title style="padding-bottom: 15px">2/3</ion-title>
     <ion-title>Post Job</ion-title>
 
-    <ion-button slot="end" id="supporttitle" style="background-color: purple; color: white !important">
+    <ion-button slot="end" id="supporttitle" >
       <ion-icon name="call-outline"></ion-icon>Call customer support
     </ion-button>
   </ion-toolbar>
@@ -57,8 +57,9 @@
             <small *ngIf="company.get('companystate')?.errors?.['required']">Field is required</small>
           </ion-text>
 
-          <p>City<span style="color: red">*</span></p>
-          <select formControlName="companycity" [(ngModel)]="selectedCity" [disabled]="!company.get('companystate')?.value || cityOptions.length === 0">
+          <p>City
+           <span style="color: red">*</span></p>
+          <select formControlName="companycity"  [disabled]="!company.get('companystate')?.value || cityOptions.length === 0">
             <option value="">Select one</option>
             <option *ngFor="let option of cityOptions" [value]="option.id">{{ option.name }}</option>
           </select>
@@ -67,15 +68,13 @@
           </ion-text>
 
           <p>Country<span style="color: red">*</span></p>
-          <input type="text" formControlName="companycountry" />
-          <ion-text color="danger" *ngIf="company.get('companycountry')?.touched && company.get('companycountry')?.invalid">
-            <small *ngIf="company.get('companycountry')?.errors?.['required']">Field is required</small>
-          </ion-text>
+          <input type="text" formControlName="companycountry"  readonly/>
+        
 
   <p > Google map Location
     <a (click)="openTutorial()" style="cursor:pointer; color:blue;">link</a>
   </p>
-  <ion-input type="text" formControlName="google_location" placeholder="Paste iframe code here" ></ion-input>
+  <ion-input type="text" formControlName="google_map_loc" placeholder="Paste iframe code here" ></ion-input>
 <ion-modal [isOpen]="showTutorial" (didDismiss)="closeTutorial()">
   <ng-template>
     <ion-header>
@@ -136,10 +135,11 @@
           <ion-text color="danger" *ngIf="company.get('companyestb')?.touched && company.get('companyestb')?.invalid">
             <small *ngIf="company.get('companyestb')?.errors?.['required']">Field is required</small>
           </ion-text>
-
+ 
           <div class="btn">
-            <ion-button (click)="previousPage()">Back</ion-button>
-            <ion-button (click)="submitForm()" type="submit" [disabled]="company.invalid">Next</ion-button>
+            <ion-button  shape="round"  class="submitbtn"  (click)="previousPage()">Back</ion-button>
+            <ion-button    shape="round" class="submitbtn"  (click)="submitForm()" type="submit" [disabled]="company.invalid" *ngIf="isNewUser">Save & continue</ion-button>
+            <ion-button    shape="round"  class="submitbtn"  (click)="onlyNavigate()" *ngIf="!isNewUser" >Next </ion-button>
           </div>
         </div>
       </form>

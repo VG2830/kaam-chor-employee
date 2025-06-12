@@ -44,7 +44,7 @@ export class BasicDetailsPagePage  implements OnInit {
   //  selectedEmplProfile:string="";
  emplnumber: string = '';
  empProfile:string='';
-  
+  isNewUser: boolean = true;
    //end 
   constructor( private fb: FormBuilder,  private navCtrl: NavController,private apiService: ApiService,private router: Router,private route: ActivatedRoute,) {
    {this.basiclast = this.fb.group({
@@ -71,12 +71,12 @@ export class BasicDetailsPagePage  implements OnInit {
      const storedUserId = localStorage.getItem('userId');
      if (storedUserId) {
        this.user_id = parseInt(storedUserId, 10);
-      //  this.apiService.Getmbbyuserid(this.user_id).subscribe((res) => {
-      //    if (res.status && res.data?.mobile_number) {
-      //      this.mobileNumber = res.data.mobile_number;
-      //      this.basiclast.patchValue({ emplnumber: this.mobileNumber }); // Prefill mobile field
-      //    }
-      //  });
+       this.apiService.Getmbbyuserid(this.user_id).subscribe((res) => {
+         if (res.status && res.data?.mobile_number) {
+           this.mobileNumber = res.data.mobile_number;
+           this.basiclast.patchValue({ emplnumber: this.mobileNumber }); // Prefill mobile field
+         }
+       });
      
    
      
@@ -90,7 +90,14 @@ export class BasicDetailsPagePage  implements OnInit {
          contactperson:res.data.contact_person_profile,
          emplemail:res.data.email
          });
-         }});
+           this.basiclast.disable();
+           this.isNewUser = false;
+         }
+         else {
+        // If no data, treat as new user
+        this.isNewUser = true;
+      }
+        });
      }
   }
   validatePhoneNumber(event: any) {
@@ -106,7 +113,10 @@ export class BasicDetailsPagePage  implements OnInit {
     // Update the input value
     input.value = this.emplnumber;
   }
+onlyNavigation(){
+            this.router.navigate(['/company-details-page']);
 
+}
 
 submitForm() {
   if (this.basiclast.invalid ) {
