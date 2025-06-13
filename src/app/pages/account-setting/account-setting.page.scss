@@ -1,0 +1,35 @@
+.account-card {
+  background: #f9fafb;
+  border-radius: 10px;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.05);
+}
+
+.title {
+  color: #4b0082; // Deep purple
+  font-size: 1.3rem;
+}
+
+.subtitle {
+  margin-top: 4px;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.label {
+  margin-bottom: 0;
+  font-weight: 600;
+  color: #333;
+}
+
+.email-text {
+  margin-top: 6px;
+  color: #333;
+}
+
+.change-link {
+  color: #4b0082;
+  font-weight: 600;
+  margin-left: 6px;
+  text-decoration: none;
+  cursor: pointer;
+}

@@ -4,7 +4,7 @@ ion-item {
   --border-radius: 8px;
   --padding-start: 10px;
   --inner-padding-end: 10px;
-  --highlight-color-focused: #800080; // purple focus
+  --highlight-color-focused: #511168; // purple focus
   margin-bottom: 15px;
   border: 1px solid #ccc;
 }
@@ -16,13 +16,23 @@ ion-label {
 }
 
 /* Style input text */
-ion-input,
+input{
+  width: 100%;
+  height: 40px;
+  border-radius: 5px;
+  }
+
 ion-textarea {
   --padding-start: 10px;
   --padding-end: 10px;
   font-size: 15px;
   color: #000;
 }
+select{
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
+  }
 
 /* Optional: Card spacing */
 ion-card {
@@ -32,5 +42,26 @@ ion-card {
 ion-card-title {
   font-size: 18px;
   font-weight: bold;
-  color: #800080; // Purple
+  color: #511168; // Purple
+}
+// .sidebar-container {
+//   width: 250px; // Adjust as needed
+//   background-color: #f8f9fa; // Optional
+//   z-index: 1;
+// }
+
+// .content-container {
+//   flex: 1;
+//   overflow-y: auto;
+//   position: relative;
+// }
+// .main-container {
+//   display: flex;
+//   height: 100vh; // Full screen height
+// }
+.sidebarBtn{
+  display: flex;
+  flex-direction: column;
+  // align-items: center;
+  
 }

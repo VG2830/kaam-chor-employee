@@ -126,15 +126,15 @@
 
           <p>Number of Employees</p>
           <input type="number" formControlName="numemployees" />
-          <ion-text color="danger" *ngIf="company.get('numemployees')?.touched && company.get('numemployees')?.invalid">
+          <!-- <ion-text color="danger" *ngIf="company.get('numemployees')?.touched && company.get('numemployees')?.invalid">
             <small *ngIf="company.get('numemployees')?.errors?.['required']">Field is required</small>
-          </ion-text>
+          </ion-text> -->
 
           <p>Year of Establishment</p>
           <input type="number" formControlName="companyestb" />
-          <ion-text color="danger" *ngIf="company.get('companyestb')?.touched && company.get('companyestb')?.invalid">
+          <!-- <ion-text color="danger" *ngIf="company.get('companyestb')?.touched && company.get('companyestb')?.invalid">
             <small *ngIf="company.get('companyestb')?.errors?.['required']">Field is required</small>
-          </ion-text>
+          </ion-text> -->
  
           <div class="btn">
             <ion-button  shape="round"  class="submitbtn"  (click)="previousPage()">Back</ion-button>

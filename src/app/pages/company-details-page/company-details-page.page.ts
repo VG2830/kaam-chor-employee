@@ -44,8 +44,8 @@ isNewUser: boolean = true;
         companywebsite: ['', Validators.required],
         companydesc: ['', Validators.required],
         industrytype: ['', Validators.required],
-        numemployees: ['', Validators.required],
-        companyestb: ['', Validators.required],
+        numemployees: [''],
+        companyestb: [''],
       });
     }
   }

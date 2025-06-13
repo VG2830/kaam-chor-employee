@@ -1,29 +1,85 @@
-<ion-content class="ion-padding">
+
+ <!-- <div class="main-container">
+  <div class="sidebar-container"><app-sidebar></app-sidebar>
+  </div> -->
+<ion-menu contentId="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Menu Content</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    <div class="sidebarBtn">
+      <ion-button> <a href="employer-plan" style="text-decoration: none; color: black;">Dashboard</a></ion-button>
+    <ion-button > <a href="my-profile" style="text-decoration: none; color: black;">  <ion-icon name="person" ></ion-icon>My  Profile</a></ion-button>
+      <ion-button >Candidate</ion-button>
+      <ion-button>My Jobs</ion-button>
+      <ion-button>Inactive Jobs</ion-button>
+      <ion-button> <a href="basic-details-page" style="text-decoration: none; color: black;">Post Job</a></ion-button>
+      <ion-button
+        ><ion-icon name="bookmark"></ion-icon>Saved Candidate</ion-button
+      >
+      <ion-button
+        ><ion-icon name="settings"></ion-icon>Account Setting
+      </ion-button>
+      <ion-button><a href="splash-screen" style="text-decoration: none; color: black;"><ion-icon name="exit"></ion-icon>Logout</a></ion-button>
+    </div>
+  </ion-content>
+</ion-menu>
+
+<div class="ion-page" id="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <img
+        src="../../../assets/icons/kaam-chor-logo-removebg.png"
+        style="opacity: 0.7"
+        alt="logo"
+      />
+      <!-- <ion-title>Menu</ion-title> -->
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding ">
   <!-- Personal Details -->
+    <form [formGroup]="profilePage" >
   <ion-card>
+
     <ion-card-header>
       <ion-card-title style="color: purple">Personal Details</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      <ion-item>
-        <ion-label position="floating">Name</ion-label>
-        <ion-input formControlName="name"></ion-input>
-      </ion-item>
+      
+        <p>Name</p>
+        <input formControlName="employer_name">
+     
 
-      <ion-item>
-        <ion-label position="floating">Email</ion-label>
-        <ion-input type="email" formControlName="email"></ion-input>
-      </ion-item>
+      
+      <p>Email</p>
+        <input type="email" formControlName="email">
+      
 
-      <ion-item>
-        <ion-label position="floating">Mobile Number</ion-label>
-        <ion-input type="tel" formControlName="mobile"></ion-input>
-      </ion-item>
+     
+        <p>Mobile Number</p>
+        <input type="tel" formControlName="reg_mb">
+      
 
-      <ion-item>
-        <ion-label position="floating">Profile</ion-label>
-        <ion-input formControlName="profile"></ion-input>
-      </ion-item>
+     
+        <p>Profile</p>
+        <select
+            name=""
+            id=""
+            placeholder="General "
+            formControlName="contact_person_profile"
+           
+          >
+            <option value ="">Select one</option>
+             <option *ngFor="let option of empProfileOptions" [value]="option.id">{{option.profile}}</option>
+           
+          </select>
+        <!-- <input formControlName="contact_person_profile"> -->
+      
     </ion-card-content>
   </ion-card>
 
@@ -33,35 +89,40 @@
       <ion-card-title style="color: purple">Company Details</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      <ion-item>
-        <ion-label position="floating">Company Name</ion-label>
-        <ion-input formControlName="company_name"></ion-input>
-      </ion-item>
+      
+        <p>Company Name</p>
+        <input formControlName="company_name">
+     
 
-      <ion-item>
-        <ion-label position="floating">Industry Type</ion-label>
-        <ion-input formControlName="industry_type"></ion-input>
-      </ion-item>
+      
+       <p>Industry Type</p>
+       <select formControlName="industry_type" >
+            
+            <option *ngFor="let option of industryTypeOptions" [value]="option.id">{{ option.value }}</option>
+          </select>
+        <!-- <input formControlName="industry_type"> -->
+      
 
-      <ion-item>
-        <ion-label position="floating">Year of Establishment</ion-label>
-        <ion-input type="number" formControlName="year"></ion-input>
-      </ion-item>
+      
+        <p>Year of Establishment</p>
+        <input type="number" formControlName="year_of_establishment">
+     
 
-      <ion-item>
-        <ion-label position="floating">Company Size</ion-label>
-        <ion-input formControlName="company_size"></ion-input>
-      </ion-item>
+      
+        <p>Company Size</p>
+        <input formControlName="comp_size">
+      
 
-      <ion-item>
-        <ion-label position="floating">Company Website</ion-label>
-        <ion-input formControlName="company_website"></ion-input>
-      </ion-item>
+      
+       
+        <p>Company Website</p>
+        <input formControlName="comp_website">
+     
 
-      <ion-item>
-        <ion-label position="floating">About Company</ion-label>
-        <ion-textarea formControlName="about_company"></ion-textarea>
-      </ion-item>
+     
+      <p>About Company</p>
+        <ion-textarea formControlName="abt_the_comp"></ion-textarea>
+      
     </ion-card-content>
   </ion-card>
 
@@ -71,34 +132,43 @@
       <ion-card-title style="color: purple">Address & Location</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      <ion-item>
-        <ion-label position="floating">Company Full Address</ion-label>
-        <ion-input formControlName="company_address"></ion-input>
-      </ion-item>
+  
+       <p>Company Full Address</p>
+        <input formControlName="full_address">
+      
 
-      <ion-item>
-        <ion-label position="floating">Country</ion-label>
-        <ion-input formControlName="country"></ion-input>
-      </ion-item>
+     
+       <p>Country</p>
+        <input formControlName="country" readonly>
+      
 
-      <ion-item>
-        <ion-label position="floating">State</ion-label>
-        <ion-input formControlName="state"></ion-input>
-      </ion-item>
+      
+           <p>State</p>
+           <select formControlName="state"  (ngModelChange)="onStateChange($event)">
+            <option *ngFor="let option of stateOptions" [value]="option.id">{{ option.name }}</option>
+          </select>
+         <!-- <input formControlName="state"> -->
+    
 
-      <ion-item>
-        <ion-label position="floating">City</ion-label>
-        <ion-input formControlName="city"></ion-input>
-      </ion-item>
+     
+        <p>City</p>
+         <select formControlName="city"  [disabled]="!profilePage.get('companystate')?.value || cityOptions.length === 0">
+            <option *ngFor="let option of cityOptions" [value]="option.id">{{ option.name }}</option>
+          </select>
+        <!-- <input formControlName="city"> -->
+      
 
-      <ion-item>
-        <ion-label position="floating">Map Location</ion-label>
-        <ion-input
-          formControlName="map_location"
+      
+        <p>Map Location</p>
+        <input
+          formControlName="google_map_loc"
          
           value="No location provided"
-        ></ion-input>
-      </ion-item>
+        >
+     
     </ion-card-content>
   </ion-card>
+  </form>
 </ion-content>
+</div>
+

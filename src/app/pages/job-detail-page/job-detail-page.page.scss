@@ -1,13 +1,13 @@
 // Navigation and header styles
 .navbtna {
-  background-color: purple;
+  background-color: #511168;
   color: white !important;
 }
 
 #supporttitle {
   font-size: 0.7rem;
   margin-right: 10px;
-  --background: purple;
+  --background: #511168;
   color: white !important;
 }
 
@@ -18,9 +18,9 @@
 
 // Purple button theme
 .purple-button {
-  --background: #800080;
+  --background: #511168;
   --color: #fff;
-  --border-color: #800080;
+  --border-color: #511168;
 }
 
 h6 {
@@ -121,15 +121,15 @@ ion-textarea {
   
   ion-checkbox {
     --size: 18px;
-    --checkbox-background-checked: #800080;
-    --border-color-checked: #800080;
+    --checkbox-background-checked: #511168;
+    --border-color-checked: #511168;
     --checkmark-color: white;
   }
 }
 
 // Headings
 .heading {
-  color: purple;
+  color: #511168;
   margin-bottom: 24px;
 }
 
@@ -173,9 +173,9 @@ ion-textarea {
     font-size: 14px;
     
     &.purple-button {
-      --background: #800080;
+      --background: #511168;
       --color: white;
-      --border-color: #800080;
+      --border-color: #511168;
     }
     
     &.medium {
@@ -208,9 +208,9 @@ ion-textarea {
     text-transform: none;
     
     &.purple-button {
-      --background: #800080;
+      --background: #511168;
       --color: white;
-      --border-color: #800080;
+      --border-color: #511168;
     }
     
     &.medium {
@@ -274,7 +274,7 @@ ng-select {
 
 /* Selected option */
 ::ng-deep .ng-dropdown-panel .ng-option-selected {
-  background-color: #800080 !important;
+  background-color: #511168 !important;
   color: #fff;
 }
 
@@ -285,7 +285,7 @@ ng-select {
 .selected-skill-chip {
   display: inline-flex;
   align-items: center;
-  background-color: #800080;
+  background-color: #511168;
   color: white;
   border-radius: 16px;
   padding: 2px 10px;
@@ -321,7 +321,7 @@ ion-button[expand="full"] {
   font-weight: 600;
   
   &:not([disabled]) {
-    --background: #800080;
+    --background: #511168;
     --color: white;
   }
   
@@ -376,7 +376,7 @@ ion-text[color="danger"] {
 ion-input:focus-within,
 ion-select:focus-within,
 ion-textarea:focus-within {
-  --border-color: #800080;
+  --border-color: #511168;
   --border-width: 2px;
 }
 .btn{
@@ -389,7 +389,7 @@ ion-textarea:focus-within {
 }
 .submitbtn{
 
-  --background: purple;
+  --background: #511168;
   color: white !important;
    border-radius: 5px;
 }

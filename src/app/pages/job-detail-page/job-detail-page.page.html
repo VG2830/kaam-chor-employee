@@ -231,9 +231,11 @@
               <ion-item>
               <ion-label position="stacked">Min Experience</ion-label>
   <ion-select formControlName="minexp" placeholder="Select minimum years">
+    <ion-select-option [value]="">Fresher</ion-select-option>
     <ion-select-option *ngFor="let year of years" [value]="year">
       {{ year }} year{{ year > 1 ? 's' : '' }}
     </ion-select-option>
+    <ion-select-option [value]="">30+ years</ion-select-option>
   </ion-select>
 </ion-item>
               <!-- <ion-item>
@@ -254,6 +256,7 @@
     <ion-select-option *ngFor="let year of years" [value]="year">
       {{ year }} year{{ year > 1 ? 's' : '' }}
     </ion-select-option>
+    <ion-select-option [value]="">30+ years</ion-select-option>
   </ion-select>
 </ion-item>
               <!-- <ion-item>
@@ -425,7 +428,7 @@
               >Field is required</small
             >
           </ion-text>
-
+<div style="margin-bottom: 20px;">
           <p>Mention Skills required <span style="color: red">*</span></p>
           <ng-select
             [items]="selectedSkills"
@@ -442,7 +445,7 @@
           >
             <!-- Display chips for selected items -->
             <ng-template ng-multi-label-tmp let-items="items">
-              <div class="selected-skill-chip" *ngFor="let item of items">
+              <div class="selected-skill-chip" *ngFor="let item of items" >
                 {{ item.value }}
                 <span class="remove-chip" (click)="removeSkill(item)">✕</span>
               </div>
@@ -458,7 +461,7 @@
               >Skills field is required</small
             >
           </ion-text>
-
+</div>
           <p>
             Is there any security deposit charged to the candidate (Eg. Uniform,
             Kit, Bike)? <span style="color: red">*</span>

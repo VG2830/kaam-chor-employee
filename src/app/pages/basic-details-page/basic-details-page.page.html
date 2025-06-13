@@ -18,7 +18,7 @@
         content-id="basic"
         style="background-color: purple; color: white !important"
       >
-        <ion-label class="ion-text-wrap">Basic Details</ion-label>
+        <ion-label class="ion-text-wrap">Basic Details{{isNewUser}}</ion-label>
       </ion-segment-button>
       <ion-segment-button value="company" >
         <ion-label class="ion-text-wrap">Company Details</ion-label>
@@ -52,8 +52,7 @@
           <p>Email<span style="color: red">*</span></p>
           <input
             type="email"
-            name=""
-            id=""
+          
             value=""
             formControlName="emplemail"
           />
@@ -65,9 +64,12 @@
               color="danger"
               *ngIf="
                 basiclast.get('emplemail')?.touched &&
-                basiclast.get('emplemail')?.invalid
+                basiclast.get('emplemail')?.invalid 
               "
-            >
+            > 
+            <small *ngIf="basiclast.get('emplemail')?.errors?.['email']">
+      Enter a valid email address
+    </small>
               <small *ngIf="basiclast.get('emplemail')?.errors?.['required']"
                 >Feild is required</small
               >
@@ -123,11 +125,11 @@
               class="submitbtn"
               (click)="submitForm()"
               [disabled]="basiclast.invalid"
-          *ngIf="!isNewUser"
+               *ngIf="isNewUser"
               >Save & Continue</ion-button
             >
             <ion-button  expand="block" class="submitbtn"  (click)="onlyNavigation()"
-             *ngIf="isNewUser" >
+             *ngIf="!isNewUser" >
               Next
             </ion-button>
           </div>

@@ -69,5 +69,13 @@ export class ApiService {
  getEmployerCompanyData(userId: number): Observable<any> {
   return this.http.get<any>(`${this.apiUrl}/Employer_Api/getEmployerCompanyData/${userId}`);
 }
+getEmployerProfile(userId: number): Observable<any> {
+  return this.http.get<any>(`${this.apiUrl}/Employer_Api/getEmployerProfile/${userId}`);
+}
+updateEmployerEmail(userId: number): Observable<any> {
+  return this.http.get<any>(`${this.apiUrl}/Employer_Api/updateEmployerEmail/${userId}`);
+}
+
+
 
 }

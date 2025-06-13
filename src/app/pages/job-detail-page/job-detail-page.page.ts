@@ -57,7 +57,7 @@ export class JobDetailPage implements OnInit {
     private navCtrl: NavController,
     private router: Router
   ) {
-     this.years = Array.from({ length: 30 }, (_, i) => i + 1);
+     this.years = Array.from({ length: 29 }, (_, i) => i + 1);
     this.jobForm = this.fb.group({
       jobTitle: ['', [Validators.required, Validators.minLength(3)]],
       jobCategory: ['', Validators.required],
@@ -100,14 +100,16 @@ export class JobDetailPage implements OnInit {
     });
   }
  private transformLanguagesData(languages: any[]): any[] {
-  return languages.map(lang => {
+ 
+  return languages.map((lang,index) => {
     const rwsArray = [];
     if (lang.rws.read) rwsArray.push('Read');
     if (lang.rws.write) rwsArray.push('Write');
     if (lang.rws.speak) rwsArray.push('Speak');
     
     return {
-      language_id: lang.language_id,
+      // language_id: lang.language_id,
+      language_id: index+1,
       language: lang.language,
       rws: rwsArray.join(', ')
     };
@@ -138,6 +140,7 @@ export class JobDetailPage implements OnInit {
     this.apiService.getLanguages().subscribe((res: any) => {
       if (res.status === 'success') {
         this.languageOptions = res.data;
+        console.log(this.languageOptions);
       }
        if (res) {
       const skills = this.jobForm.get('rws')?.value;
