@@ -160,11 +160,15 @@
 
       
         <p>Map Location</p>
-        <input
+        <!-- <input
           formControlName="google_map_loc"
          
           value="No location provided"
-        >
+        > -->
+
+        <!-- <div [innerHTML]="googleMapLoc "></div> -->
+        <div [innerHTML]="profilePage.get('google_map_loc')?.value"></div>
+
      
     </ion-card-content>
   </ion-card>

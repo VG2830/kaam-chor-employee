@@ -10,7 +10,7 @@
   <ion-toolbar>
     <ion-segment value="company">
      
-      <ion-segment-button value="basic" >
+      <ion-segment-button value="basic"  content-id="" click="basicpg()" >
         <ion-label class="ion-text-wrap">Basic Details</ion-label>
       </ion-segment-button>
       <ion-segment-button
@@ -74,7 +74,10 @@
   <p > Google map Location
     <a (click)="openTutorial()" style="cursor:pointer; color:blue;">link</a>
   </p>
-  <ion-input type="text" formControlName="google_map_loc" placeholder="Paste iframe code here" ></ion-input>
+
+  <ion-input *ngif="isNewUser" type="text" formControlName="google_map_loc" placeholder="Paste iframe code here" ></ion-input>
+        <div *ngIf="!isNewUser" [innerHTML]="company.get('google_map_loc')?.value"></div>
+
 <ion-modal [isOpen]="showTutorial" (didDismiss)="closeTutorial()">
   <ng-template>
     <ion-header>

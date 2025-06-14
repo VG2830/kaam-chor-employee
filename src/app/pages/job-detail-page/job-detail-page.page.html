@@ -9,11 +9,11 @@
   </ion-toolbar>
   <ion-toolbar>
     <ion-segment value="job">
-      <ion-segment-button value="basic" content-id="">
+      <ion-segment-button value="basic" content-id="" (click)="basicpg()">
         <ion-label class="ion-text-wrap">Basic Details</ion-label>
       </ion-segment-button>
-      <ion-segment-button value="company" content-id="">
-        <ion-label class="ion-text-wrap">Company Details</ion-label>
+      <ion-segment-button value="company" content-id=""(click)="companypg()">
+        <ion-label class="ion-text-wrap" > Company Details</ion-label>
       </ion-segment-button>
       <ion-segment-button
         value="job"
@@ -36,9 +36,9 @@
         <div class="box">
           <h2 class="heading">Job Details</h2>
 
-          <ion-item>
-            <ion-label position="stacked"
-              >Job Title <span style="color: red">*</span></ion-label
+          
+            <p
+              >Job Title <span style="color: red">*</span></p
             >
             <ion-input
               type="text"
@@ -46,7 +46,7 @@
               placeholder="Enter job title"
             >
             </ion-input>
-          </ion-item>
+          
           <ion-text
             color="danger"
             *ngIf="
@@ -75,6 +75,19 @@
               {{option.category_name}}
             </option>
           </ng-select>
+  <!-- <ng-select
+  [items]="dropdownOptions"
+  bindLabel="category_name"
+  bindValue="id"
+  placeholder="Search to select a job category"
+  formControlName="jobCategory"
+  [searchable]="true"
+>
+  <ng-template ng-option-tmp let-item="item">
+    {{ item.category_name }}
+  </ng-template>
+</ng-select> -->
+
           <ion-text
             color="danger"
             *ngIf="
@@ -121,10 +134,10 @@
             >
           </ion-text>
 
-          <ion-item>
-            <ion-label position="stacked"
+          
+            <p
               >No. of Positions Open
-              <span style="color: red">*</span></ion-label
+              <span style="color: red">*</span></p
             >
             <ion-input
               type="number"
@@ -132,7 +145,7 @@
               placeholder="Enter number of positions"
             >
             </ion-input>
-          </ion-item>
+         
           <ion-text
             color="danger"
             *ngIf="
@@ -238,15 +251,7 @@
     <ion-select-option [value]="">30+ years</ion-select-option>
   </ion-select>
 </ion-item>
-              <!-- <ion-item>
-                <ion-label position="stacked">Min Experience</ion-label>
-                <ion-input
-                  type="number"
-                  formControlName="minexp"
-                  placeholder="Enter minimum experience in years"
-                >
-                </ion-input>
-              </ion-item> -->
+              
             </div>
 
             <div *ngIf="candidatetype === 'experienced'">
@@ -259,17 +264,7 @@
     <ion-select-option [value]="">30+ years</ion-select-option>
   </ion-select>
 </ion-item>
-              <!-- <ion-item>
-                
-                <ion-label position="stacked">Max Experience</ion-label>
-                <ion-input
-                  type="number"
-                  formControlName="maxexp"
-                  placeholder="Enter maximum experience in years"
-                >
-                </ion-input>
-                
-              </ion-item> -->
+             
             </div>
           </div>
 
@@ -386,7 +381,7 @@
               [items]="qualification"
               bindLabel="value"
               bindValue="id"
-              placeholder=" Search to select a qualification"
+              placeholder=" Search to select a qualification   : " 
               formControlName="qualification"
               [searchable]="true"
             >
@@ -407,9 +402,9 @@
             >
           </ion-text>
 
-          <ion-item>
-            <ion-label position="stacked"
-              >Salary per Month <span style="color: red">*</span></ion-label
+          
+            <p
+              >Salary per Month <span style="color: red">*</span></p
             >
             <ion-input
               type="number"
@@ -417,7 +412,7 @@
               placeholder="Enter salary amount"
             >
             </ion-input>
-          </ion-item>
+          
           <ion-text
             color="danger"
             *ngIf="
@@ -521,18 +516,33 @@
     </ng-select>
 
     <div class="rws" formGroupName="rws">
-      <ion-item>
-        <ion-label>Read</ion-label>
-        <ion-checkbox formControlName="read"></ion-checkbox>
-      </ion-item>
-      <ion-item>
-        <ion-label>Write</ion-label>
-        <ion-checkbox formControlName="write"></ion-checkbox>
-      </ion-item>
-      <ion-item>
-        <ion-label>Speak</ion-label>
-        <ion-checkbox formControlName="speak"></ion-checkbox>
-      </ion-item>
+     
+       <ion-row>
+            <ion-col size="4">
+              <ion-item lines="none">
+                <ion-checkbox slot="start" formControlName="read"
+                 >
+                </ion-checkbox>
+                <ion-label style="margin-left: 5px;">Read</ion-label>
+              </ion-item>
+            </ion-col>
+            <ion-col size="4">
+              <ion-item lines="none">
+                <ion-checkbox slot="start" formControlName="write"
+                 >
+                </ion-checkbox>
+                <ion-label style="margin-left: 5px;">Write</ion-label>
+              </ion-item>
+            </ion-col>
+            <ion-col size="4">
+              <ion-item lines="none">
+                <ion-checkbox slot="start" formControlName="speak" 
+                 >
+                </ion-checkbox>
+                <ion-label  style="margin-left: 5px;">Speak</ion-label>
+              </ion-item>
+            </ion-col>
+          </ion-row>
     </div>
 
     <ion-text color="danger" *ngIf="langGroup.get('language')?.touched && langGroup.get('language')?.invalid">
@@ -542,7 +552,7 @@
     </ion-text>
 
     <div class="languageAddRem">
-      <ion-button (click)="addLanguage()" color="success">Add</ion-button>
+      <ion-button (click)="addLanguage()" color="success" [disabled]="languages.length > 4">Add</ion-button>
       <ion-button (click)="removeLanguage(i)" color="danger" *ngIf="languages.length > 1">Remove</ion-button>
     </div>
 

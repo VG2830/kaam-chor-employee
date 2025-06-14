@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { Input ,Output,EventEmitter} from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
+
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/services/api.service';
@@ -22,7 +24,7 @@ export class MyProfilePage implements OnInit {
   cityOptions: any[] = [];
   city: string = '';
 
-  constructor(private fb: FormBuilder,private apiService: ApiService,private router: Router,private route: ActivatedRoute) {
+  constructor(private fb: FormBuilder,private apiService: ApiService,private router: Router,private route: ActivatedRoute,private sanitizer: DomSanitizer) {
      {this.profilePage = this.fb.group({
 
   employer_name: [''],
@@ -68,7 +70,11 @@ export class MyProfilePage implements OnInit {
      this.apiService.getEmployerProfile(this.user_id).subscribe((res) => {
          if (res.status && res.data) {
            console.log(res);
-
+      
+          
+        // Sanitize the HTML to make it safe for rendering     this.googleMapLoc = this.sanitizer.bypassSecurityTrustHtml(apiGoogleMapLoc);
+ 
+ 
           //  this.empProfile=res.data.employer_name;
          this.profilePage.patchValue({
           employer_name:res.data.personal_details.employer_name,
@@ -84,7 +90,7 @@ export class MyProfilePage implements OnInit {
          full_address:res.data.company_details.full_address,
          state:res.data.company_details.state,
          city:res.data.company_details.city,
-         google_map_loc:res.data.company_details.google_map_loc
+         google_map_loc:this.sanitizer.bypassSecurityTrustHtml(res.data.company_details.google_map_loc)
          });
          const stateId = res.data.state;
          const cityId = res.data.city;
@@ -96,6 +102,7 @@ export class MyProfilePage implements OnInit {
          }
          
   }
+  
   initializecity(stateId: number,cityId:number){
     if (stateId) {
       this.apiService.getCitiesByState(stateId).subscribe((res: any) => {

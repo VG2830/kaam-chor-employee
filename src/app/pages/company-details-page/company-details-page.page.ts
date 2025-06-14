@@ -4,6 +4,7 @@ import { NavController } from '@ionic/angular';
 import { LocalStorageUtil } from 'src/app/shared/utils/localStorageUtil';
 import { ApiService } from 'src/app/services/api.service';
 import { Router } from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-mainfirst',
@@ -31,7 +32,8 @@ isNewUser: boolean = true;
     private fb: FormBuilder,
     private navCtrl: NavController,
     private apiService: ApiService,
-    private router: Router
+    private router: Router,
+    private sanitizer: DomSanitizer
   ) {
     {
       this.company = this.fb.group({
@@ -74,7 +76,7 @@ isNewUser: boolean = true;
           companyaddress:res.data.full_address,
          companystate:res.data.state,
          companycity:res.data.city,
-         google_map_loc:res.data.google_map_loc,
+         google_map_loc:this.sanitizer.bypassSecurityTrustHtml(res.data.google_map_loc),
          companywebsite:res.data.comp_website,
          companydesc:res.data.abt_the_comp,
          industrytype:res.data.industry_type,
@@ -138,7 +140,9 @@ isNewUser: boolean = true;
       this.company.get('companycity')?.setValue('');
     }
   }
-
+basicpg(){
+  this.router.navigate(['/basic-details-page']);
+}
   nextStep2() {
     if (this.company.valid) {
       console.log('Form data:', this.company.value);

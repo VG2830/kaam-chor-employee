@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <ion-title class="ion-text-center">My Jobs</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <!-- Top Controls -->
+  <div class="top-controls">
+    <ion-select placeholder="Entries per page" [(ngModel)]="entriesPerPage">
+      <ion-select-option value="10">10</ion-select-option>
+      <ion-select-option value="25">25</ion-select-option>
+      <ion-select-option value="50">50</ion-select-option>
+    </ion-select>
+
+    <ion-searchbar placeholder="Search..." [(ngModel)]="searchQuery" debounce="300"></ion-searchbar>
+  </div>
+
+  <!-- Jobs Table -->
+  <ion-grid class="jobs-table">
+    <ion-row class="table-header">
+      <ion-col size="1">#</ion-col>
+      <ion-col size="2">Logo</ion-col>
+      <ion-col size="3">Job Title</ion-col>
+      <ion-col size="3">Company Details</ion-col>
+      <ion-col size="1">Applicants</ion-col>
+      <ion-col size="2">Posted On</ion-col>
+      <ion-col size="1">Action</ion-col>
+    </ion-row>
+
+    <ion-row *ngFor="let job of filteredJobs(); let i = index" class="table-row">
+      <ion-col size="1">{{ i + 1 }}</ion-col>
+      <ion-col size="2">
+        <img [src]="job.logo" alt="logo" class="logo-img" />
+      </ion-col>
+      <ion-col size="3">
+        {{ job.title }}<br />
+        <span class="job-type">{{ job.type }}</span>
+      </ion-col>
+      <ion-col size="3">
+        <strong>{{ job.company }}</strong><br />
+        {{ job.location }}
+      </ion-col>
+      <ion-col size="1">{{ job.applicants }}</ion-col>
+      <ion-col size="2">{{ job.posted }}</ion-col>
+      <ion-col size="1">
+        <ion-button fill="clear" size="small">
+          <ion-icon name="ellipsis-vertical"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!-- Pagination Info -->
+  <!-- <ion-text class="entry-info">
+    Showing {{ startEntry }} to {{ endEntry }} of {{ totalEntries }} entries
+  </ion-text> -->
+</ion-content>

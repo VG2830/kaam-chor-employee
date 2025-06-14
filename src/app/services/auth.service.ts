@@ -27,5 +27,9 @@ export class AuthService {
     return this.http.post(`${this.apiUrl}/api/get_usermb`, { userId });
   }
    
+  isLoggedIn(): boolean {
+  return !!localStorage.getItem('userId'); // or your preferred check
+}
+
 }
     
